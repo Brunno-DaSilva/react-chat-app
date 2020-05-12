@@ -20,9 +20,13 @@ class SignUpForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
-    this.props.onSignUp(email, password);
+    this.props.onSignUp(this.state);
+    this.setState({
+      email: "",
+      password: "",
+    });
   };
+
   render() {
     return (
       <div>

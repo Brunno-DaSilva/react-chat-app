@@ -20,7 +20,11 @@ class LoginForm extends Component {
 
   login = (e) => {
     e.preventDefault();
-    this.props.onLogin(this.state.email);
+    this.props.onLogin(this.state);
+    this.setState({
+      email: "",
+      password: "",
+    });
   };
 
   render() {

@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import SignUpForm from "./components/SignUpForm";
+import LoginForm from "./components/LoginForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    isLoggedIn: false,
+    email: "",
+  };
+
+  handleSignUp = (e) => {
+    e.preventDefault();
+    // this.setState({
+    //   hasSignedUp: !this.state.hasSignedUp,
+    // });
+
+    this.setState((state) => {
+      const newState = Object.assign({}, state);
+      newState.hasSignedUp = !newState.hasSignedUp;
+      return newState;
+    });
+  };
+
+  handleLogin = (email) => {
+    this.setState({
+      isLoggedIn: true,
+      email,
+    });
+    console.log("App", this.state);
+  };
+
+  render() {
+    return (
+      <div>
+        <SignUpForm onSignUp={this.handleSignUp} />
+        <LoginForm onLogin={this.handleLogin} />
+        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+      </div>
+    );
+  }
 }
 
 export default App;

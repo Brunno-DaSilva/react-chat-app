@@ -4,8 +4,6 @@ class SignUpForm extends Component {
   state = {
     email: "",
     password: "",
-    firstName: "",
-    lastName: "",
   };
 
   updateEmail = (e) => {
@@ -20,37 +18,17 @@ class SignUpForm extends Component {
     });
   };
 
-  updateFirstName = (e) => {
-    this.setState({
-      firstName: e.target.value,
-    });
-  };
-
-  updateLastName = (e) => {
-    this.setState({
-      lastName: e.target.value,
-    });
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.onSignUp(email, password);
   };
   render() {
     return (
       <div>
         <h1>Sign Up Form</h1>
 
-        <form onSubmit={this.props.onSignUp}>
-          <input
-            placeholder="First Name"
-            type="text"
-            value={this.state.firstName}
-            onChange={this.updateFirstName}
-          ></input>
-
-          <input
-            placeholder="Last Name"
-            type="text"
-            value={this.state.lastName}
-            onChange={this.updateLastName}
-          ></input>
-
+        <form onSubmit={this.onSubmit}>
           <input
             placeholder="Email"
             type="text"

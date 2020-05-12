@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
-import auth from "./fire";
+import { auth } from "./fire";
 
 class App extends Component {
   state = {
@@ -9,17 +9,11 @@ class App extends Component {
     email: "",
   };
 
-  handleSignUp = (e) => {
-    e.preventDefault();
-    // this.setState({
-    //   hasSignedUp: !this.state.hasSignedUp,
-    // });
-
-    this.setState((state) => {
-      const newState = Object.assign({}, state);
-      newState.hasSignedUp = !newState.hasSignedUp;
-      return newState;
-    });
+  handleSignUp = (email, password) => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => console.log(user))
+      .catch((err) => console.error(err));
   };
 
   handleLogin = (email) => {

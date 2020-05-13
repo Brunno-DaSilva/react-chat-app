@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
+import SideBar from "./components/SideBar";
 import { auth } from "./fire";
+import "bulma/css/bulma.css";
 
 class App extends Component {
   state = {
@@ -41,16 +43,18 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
-        <SignUpForm onSignUp={this.handleSignUp} />
-        <LoginForm onLogin={this.handleLogin} />
-        <button onClick={this.logout}>Logout</button>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
-        {this.state.isLoggedIn ? (
-          <p>You {this.state.email} are logged in</p>
-        ) : (
-          <p>You are not logged in</p>
-        )}
+      <div className="columns vh-100">
+        <SideBar logout={this.logout} />
+        <div className="column hero">
+          <div className="hero-body">
+            <div className="columns is-centered">
+              <div className="column is-half">
+                <SignUpForm onSignUp={this.handleSignUp} />
+                <LoginForm onLogin={this.handleLogin} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

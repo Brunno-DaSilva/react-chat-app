@@ -29,22 +29,41 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Log In Form</h1>
+      <div className="box">
+        <h1 className="title is-4 dark-gray-text dark-gray-text">
+          Log In Form
+        </h1>
+
         <form onSubmit={this.login}>
-          <input
-            placeholder="Email..."
-            type="text"
-            value={this.state.email}
-            onChange={this.updateEmail}
-          ></input>
-          <input
-            placeholder="Password..."
-            type="password"
-            value={this.state.password}
-            onChange={this.updatePassword}
-          ></input>
-          <button placeholder="Username" type="submit">
+          <div className="field">
+            <div className="control">
+              <input
+                placeholder="Email"
+                type="text"
+                value={this.state.email}
+                onChange={this.updateEmail}
+                className="input"
+              ></input>
+            </div>
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <input
+                placeholder="Password"
+                type="password"
+                value={this.state.password}
+                onChange={this.updatePassword}
+                className="input"
+              ></input>
+            </div>
+          </div>
+
+          <button
+            placeholder="Username"
+            type="submit"
+            className="button is-fullwidth is-primary"
+          >
             Log in
           </button>
         </form>

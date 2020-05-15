@@ -11,7 +11,7 @@ class App extends Component {
     isLoggedIn: false,
     email: "",
     uid: null,
-    room: {
+    rooms: {
       hh12: {
         title: "General",
         author: "bruno.dasilva@gmail.com",
@@ -58,7 +58,7 @@ class App extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="columns vh-100">
+      <div className="columns vh-100 is-gapless">
         <SideBar logout={this.logout} rooms={this.state.rooms} />
         <MainContainer>
           <SignUpForm onSignUp={this.handleSignUp} />

@@ -30,7 +30,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="box">
-        <h1 className="title is-4">Sign Up Form</h1>
+        <h1 className="title is-4 dark-gray-text">Sign Up Form</h1>
 
         <form onSubmit={this.onSubmit}>
           <div className="field">

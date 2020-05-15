@@ -5,11 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.1em;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.nav-padding {
+  padding: 1rem !important;
 }
 
 .some {
@@ -22,4 +26,13 @@ code {
 
 .dark-gray-text {
   color: #6b6b6b !important;
+}
+
+.a-text {
+  color: #ffffff !important;
+  letter-spacing: 0.1rem;
+}
+
+.a-text:hover {
+  color: #545454 !important;
 }

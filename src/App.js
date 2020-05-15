@@ -74,16 +74,6 @@ class App extends Component {
     });
   };
   render() {
-    const whatToShow = this.state.isLoggedIn ? (
-      <div>
-        <h1 className="title is-2"> You are Logged in!</h1>
-      </div>
-    ) : (
-      <div>
-        <SignUpForm onSignUp={this.handleSignUp} />
-        <LoginForm onLogin={this.handleLogin} />
-      </div>
-    );
     return (
       <div className="columns vh-100 is-gapless ">
         <SideBar
@@ -93,7 +83,18 @@ class App extends Component {
           setRoom={this.setRoom}
         />
 
-        <MainContainer>{whatToShow}</MainContainer>
+        <MainContainer>
+          {this.state.isLoggedIn ? (
+            <div>
+              <h1 className="title is-2"> You are Logged in!</h1>
+            </div>
+          ) : (
+            <div>
+              <SignUpForm onSignUp={this.handleSignUp} />
+              <LoginForm onLogin={this.handleLogin} />
+            </div>
+          )}
+        </MainContainer>
       </div>
     );
   }

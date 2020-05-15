@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import SideBar from "./components/SideBar";
+import MainContainer from "./components/MainContainer";
 import { auth } from "./fire";
 import "bulma/css/bulma.css";
 
@@ -10,6 +11,19 @@ class App extends Component {
     isLoggedIn: false,
     email: "",
     uid: null,
+    room: {
+      hh12: {
+        title: "General",
+        author: "bruno.dasilva@gmail.com",
+        created: Date.now(),
+      },
+      jj34: {
+        title: "Jokes",
+        author: "bruno.dasilva@gmail.com",
+        created: Date.now(),
+      },
+    },
+    selectedRoom: "hh12",
   };
 
   handleSignUp = ({ email, password }) => {
@@ -42,19 +56,14 @@ class App extends Component {
     });
   };
   render() {
+    console.log(this.state);
     return (
       <div className="columns vh-100">
         <SideBar logout={this.logout} />
-        <div className="column hero">
-          <div className="hero-body">
-            <div className="columns is-centered">
-              <div className="column is-half">
-                <SignUpForm onSignUp={this.handleSignUp} />
-                <LoginForm onLogin={this.handleLogin} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <MainContainer>
+          <SignUpForm onSignUp={this.handleSignUp} />
+          <LoginForm onLogin={this.handleLogin} />
+        </MainContainer>
       </div>
     );
   }

@@ -26,6 +26,18 @@ class App extends Component {
     selectedRoom: "hh12",
   };
 
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const { email, uid } = user;
+        this.setState({
+          email,
+          uid,
+          isLoggedIn: true,
+        });
+      }
+    });
+  }
   handleSignUp = ({ email, password }) => {
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -62,7 +74,16 @@ class App extends Component {
     });
   };
   render() {
-    console.log(this.state);
+    const whatToShow = this.state.isLoggedIn ? (
+      <div>
+        <h1 className="title is-2"> You are Logged in!</h1>
+      </div>
+    ) : (
+      <div>
+        <SignUpForm onSignUp={this.handleSignUp} />
+        <LoginForm onLogin={this.handleLogin} />
+      </div>
+    );
     return (
       <div className="columns vh-100 is-gapless ">
         <SideBar
@@ -72,10 +93,7 @@ class App extends Component {
           setRoom={this.setRoom}
         />
 
-        <MainContainer>
-          <SignUpForm onSignUp={this.handleSignUp} />
-          <LoginForm onLogin={this.handleLogin} />
-        </MainContainer>
+        <MainContainer>{whatToShow}</MainContainer>
       </div>
     );
   }

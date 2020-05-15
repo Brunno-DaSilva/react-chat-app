@@ -59,7 +59,7 @@ class App extends Component {
     console.log(this.state);
     return (
       <div className="columns vh-100">
-        <SideBar logout={this.logout} />
+        <SideBar logout={this.logout} rooms={this.state.rooms} />
         <MainContainer>
           <SignUpForm onSignUp={this.handleSignUp} />
           <LoginForm onLogin={this.handleLogin} />

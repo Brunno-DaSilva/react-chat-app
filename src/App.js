@@ -3,6 +3,7 @@ import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import SideBar from "./components/SideBar";
 import MainContainer from "./components/MainContainer";
+import ChatPanel from "./components/ChatPanel";
 import { auth } from "./fire";
 import "bulma/css/bulma.css";
 
@@ -85,9 +86,7 @@ class App extends Component {
 
         <MainContainer>
           {this.state.isLoggedIn ? (
-            <div>
-              <h1 className="title is-2"> You are Logged in!</h1>
-            </div>
+            <ChatPanel />
           ) : (
             <div>
               <SignUpForm onSignUp={this.handleSignUp} />

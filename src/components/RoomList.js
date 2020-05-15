@@ -1,14 +1,18 @@
 import React from "react";
 
-const Room = ({ room }) => {
+const Room = ({ room, selectedRoom, setRoom }) => {
+  const styles = selectedRoom === room.id ? "isActiveRoom" : "a-text";
+
   return (
     <li>
-      <a className="a-text">{room.title}</a>
+      <a className={styles} onClick={() => setRoom(room.id)}>
+        {room.title}
+      </a>
     </li>
   );
 };
 
-const RoomList = ({ rooms }) => {
+const RoomList = ({ rooms, selectedRoom, setRoom }) => {
   return (
     <aside className="menu">
       <h1 className="title is-4">Rooms:</h1>
@@ -16,7 +20,12 @@ const RoomList = ({ rooms }) => {
         {Object.keys(rooms)
           .map((roomKey) => ({ ...rooms[roomKey], id: roomKey }))
           .map((roomObj) => (
-            <Room key={roomObj.id} room={roomObj} />
+            <Room
+              key={roomObj.id}
+              room={roomObj}
+              selectedRoom={selectedRoom}
+              setRoom={setRoom}
+            />
           ))}
       </ul>
     </aside>

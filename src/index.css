@@ -12,9 +12,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.nav-padding {
-  padding: 1rem !important;
-}
 
 .some {
   color: #ffe26f;
@@ -35,4 +32,17 @@ code {
 
 .a-text:hover {
   color: #545454 !important;
+}
+
+.nav-padding {
+  padding: 1rem !important;
+}
+
+#nav-bar {
+  padding: 0.5rem !important;
+}
+
+.isActiveRoom {
+  background-color: #009c85 !important;
+  color: #ffffff !important;
 }

@@ -25,6 +25,22 @@ class App extends Component {
       },
     },
     selectedRoom: "hh12",
+    messages: {
+      m100: {
+        author: "asdasd65465as4da321sd",
+        email: "bruno.dasilvab@gmail.com",
+        roomId: "hh12",
+        text: "Ciao bella, me piace parlare italiano",
+        created: Date.now(),
+      },
+      m200: {
+        author: "sdsdsdaad3d213321658asd",
+        email: "test@test.com",
+        roomId: "hh12",
+        text: "Ciao bella, Me piace parlare italiano",
+        created: Date.now(),
+      },
+    },
   };
 
   componentDidMount() {
@@ -86,7 +102,7 @@ class App extends Component {
 
         <MainContainer>
           {this.state.isLoggedIn ? (
-            <ChatPanel />
+            <ChatPanel messages={this.state.messages} />
           ) : (
             <div>
               <SignUpForm onSignUp={this.handleSignUp} />

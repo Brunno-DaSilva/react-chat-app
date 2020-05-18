@@ -13,18 +13,7 @@ class App extends Component {
     wantsToLogin: false,
     email: "",
     uid: null,
-    rooms: {
-      hh12: {
-        title: "General",
-        author: "bruno.dasilva@gmail.com",
-        created: Date.now(),
-      },
-      jj34: {
-        title: "Jokes",
-        author: "bruno.dasilva@gmail.com",
-        created: Date.now(),
-      },
-    },
+    rooms: {},
     selectedRoom: "hh12",
     messages: {
       m100: {
@@ -44,6 +33,19 @@ class App extends Component {
     },
   };
 
+  loadData = () => {
+    roomRef.once("value").then((snapshot) => {
+      const rooms = snapshot.val();
+      const selectedRoom = Object.keys(rooms)[0];
+      console.log(selectedRoom);
+      this.setState({
+        rooms,
+        selectedRoom: selectedRoom,
+      });
+      console.log(rooms);
+    });
+  };
+
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -53,6 +55,7 @@ class App extends Component {
           uid,
           isLoggedIn: true,
         });
+        this.loadData();
       }
     });
   }

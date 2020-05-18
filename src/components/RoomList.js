@@ -7,7 +7,7 @@ const Room = ({ room, selectedRoom, setRoom }) => {
   return (
     <li>
       <a className={styles} onClick={() => setRoom(room.id)}>
-        {room.title}
+        {room.name}
       </a>
     </li>
   );
@@ -29,12 +29,16 @@ const RoomList = ({ rooms, selectedRoom, setRoom, addRoom }) => {
             />
           ))}
       </ul>
-      <div className="">
-        <p className="menu-label has=text-white is-size-5">Add a Room</p>
+
+      <div style={styleAddRoom}>
+        <p className="menu-label has-text-white is-size-5">Add a Room</p>
         <AddRoom addRoom={addRoom} />
       </div>
     </aside>
   );
 };
 
+const styleAddRoom = {
+  marginTop: "3rem",
+};
 export default RoomList;

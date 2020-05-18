@@ -72,9 +72,9 @@ class LoginForm extends Component {
             <a
               role="button"
               className="a-login-text"
-              onClick={this.props.goToLogin}
+              onClick={this.props.goToSignUp}
             >
-              Forgot your password?
+              Don't have an account? Sign Up
             </a>
           </div>
         </div>
@@ -84,6 +84,7 @@ class LoginForm extends Component {
 }
 
 export default LoginForm;
+
 const isCentered = {
   height: "80vh",
   margin: "auto",

@@ -93,8 +93,11 @@ class App extends Component {
   };
 
   sendMessage = (message) => {
-    console.log("App", message);
     messageRef.push(message);
+  };
+
+  addRoom = (roomName) => {
+    console.log(roomName);
   };
 
   render() {
@@ -105,6 +108,7 @@ class App extends Component {
           rooms={this.state.rooms}
           selectedRoom={this.state.selectedRoom}
           setRoom={this.setRoom}
+          addRoom={this.addRoom}
         />
 
         {this.state.isLoggedIn ? (

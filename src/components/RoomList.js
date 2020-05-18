@@ -1,4 +1,5 @@
 import React from "react";
+import AddRoom from "./AddRoom";
 
 const Room = ({ room, selectedRoom, setRoom }) => {
   const styles = selectedRoom === room.id ? "isActiveRoom" : "a-text";
@@ -12,7 +13,7 @@ const Room = ({ room, selectedRoom, setRoom }) => {
   );
 };
 
-const RoomList = ({ rooms, selectedRoom, setRoom }) => {
+const RoomList = ({ rooms, selectedRoom, setRoom, addRoom }) => {
   return (
     <aside className="menu">
       <h1 className="title is-4">Rooms:</h1>
@@ -28,6 +29,10 @@ const RoomList = ({ rooms, selectedRoom, setRoom }) => {
             />
           ))}
       </ul>
+      <div className="">
+        <p className="menu-label has=text-white is-size-5">Add a Room</p>
+        <AddRoom addRoom={addRoom} />
+      </div>
     </aside>
   );
 };

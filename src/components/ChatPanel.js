@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import MessageList from "./MessageList";
 import SendMessageForm from "./SendMessageForm";
 

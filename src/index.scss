@@ -1,13 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.1em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .some {
@@ -36,13 +39,11 @@ code {
   padding: 1rem 0 !important;
   text-align: right !important;
 }
-
 .a-login-text {
   color: #03b89c !important;
   letter-spacing: none !important;
   font-size: 0.8rem !important;
 }
-
 .a-login-text:hover {
   cursor: pointer;
   color: #8b8383 !important;
@@ -51,15 +52,14 @@ code {
 
 #nav-bar {
   padding: 0.5rem !important;
-}
+  .nav-padding {
+    padding: 1rem !important;
+  }
 
-#nav-bar .nav-padding {
-  padding: 1rem !important;
-}
-
-#nav-bar .isActiveRoom {
-  background-color: #009c85 !important;
-  color: #ffffff !important;
+  .isActiveRoom {
+    background-color: #009c85 !important;
+    color: #ffffff !important;
+  }
 }
 
 /* li {
@@ -71,4 +71,3 @@ code {
   li:nth-child(even) {
     color: red;
   } */
-/*# sourceMappingURL=index.css.map */

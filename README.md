@@ -6,9 +6,9 @@
 
     ReactJS
     FireBase
-    Sass
-    Bulma
-    Moment JS
+    Sass Compiler
+    Bulma CSS Framework
+    MomentJS Date formatter
 
 ---
 

@@ -10,6 +10,7 @@ import "bulma/css/bulma.css";
 class App extends Component {
   state = {
     isLoggedIn: false,
+    wantsToLogin: false,
     email: "",
     uid: null,
     rooms: {
@@ -106,8 +107,8 @@ class App extends Component {
           setRoom={this.setRoom}
         />
 
-        <MainContainer>
-          {this.state.isLoggedIn ? (
+        {this.state.isLoggedIn ? (
+          <MainContainer>
             <ChatPanel
               messages={this.state.messages}
               roomId={this.state.selectedRoom}
@@ -115,13 +116,22 @@ class App extends Component {
               uid={this.state.uid}
               sendMessage={this.sendMessage}
             />
-          ) : (
-            <div>
-              <SignUpForm onSignUp={this.handleSignUp} />
-              <LoginForm onLogin={this.handleLogin} />
-            </div>
-          )}
-        </MainContainer>
+          </MainContainer>
+        ) : (
+          <MainContainer>
+            {this.state.wantsToLogin ? (
+              <LoginForm
+                onLogin={this.handleLogin}
+                goToSignUp={() => this.setState({ wantsToLogin: false })}
+              />
+            ) : (
+              <SignUpForm
+                onSignUp={this.handleSignUp}
+                goToLogin={() => this.setState({ wantsToLogin: true })}
+              />
+            )}
+          </MainContainer>
+        )}
       </div>
     );
   }

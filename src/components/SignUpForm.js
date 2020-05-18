@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { findByLabelText } from "@testing-library/react";
 
 class SignUpForm extends Component {
   state = {
@@ -29,43 +30,66 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div className="box">
-        <h1 className="title is-4 dark-gray-text">Sign Up Form</h1>
+      <section className="columns" style={isCentered}>
+        <div className="box column is-three-quarters">
+          <h1 className="title is-4 dark-gray-text">Sign Up Form</h1>
 
-        <form onSubmit={this.onSubmit}>
-          <div className="field">
-            <div className="control">
-              <input
-                placeholder="Email"
-                type="text"
-                value={this.state.email}
-                onChange={this.updateEmail}
-                className="input"
-              ></input>
+          <form onSubmit={this.onSubmit}>
+            <div className="field">
+              <div className="control">
+                <input
+                  placeholder="Email"
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.updateEmail}
+                  className="input"
+                ></input>
+              </div>
             </div>
-          </div>
-          <div className="field">
-            <div className="control">
-              <input
-                placeholder="Password"
-                type="password"
-                value={this.state.password}
-                onChange={this.updatePassword}
-                className="input"
-              ></input>
+            <div className="field">
+              <div className="control">
+                <input
+                  placeholder="Password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.updatePassword}
+                  className="input"
+                ></input>
+              </div>
             </div>
+            <button
+              placeholder="Username"
+              type="submit"
+              className="button is-fullwidth is-primary"
+            >
+              Creat User
+            </button>
+          </form>
+
+          <div className="btn-container">
+            <a
+              role="button"
+              className="a-login-text"
+              onClick={this.props.goToLogin}
+            >
+              Already a member ? Login
+            </a>
           </div>
-          <button
-            placeholder="Username"
-            type="submit"
-            className="button is-fullwidth is-primary"
-          >
-            Creat User
-          </button>
-        </form>
-      </div>
+        </div>
+      </section>
     );
   }
 }
+
+const isCentered = {
+  height: "80vh",
+  margin: "auto",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "#506b63a2",
+  borderRadius: "0.3rem",
+};
 
 export default SignUpForm;

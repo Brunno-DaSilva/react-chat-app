@@ -19,5 +19,6 @@ firebase.analytics();
 
 export const auth = firebaseApp.auth();
 export const messageRef = firebaseApp.database().ref("messages");
+export const roomRef = firebaseApp.database().ref("rooms");
 
 export default firebaseApp;

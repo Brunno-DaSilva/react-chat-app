@@ -4,7 +4,7 @@ import LoginForm from "./components/LoginForm";
 import SideBar from "./components/SideBar";
 import MainContainer from "./components/MainContainer";
 import ChatPanel from "./components/ChatPanel";
-import { auth, messageRef } from "./fire";
+import { auth, messageRef, roomRef } from "./fire";
 import "bulma/css/bulma.css";
 
 class App extends Component {
@@ -97,7 +97,13 @@ class App extends Component {
   };
 
   addRoom = (roomName) => {
-    console.log(roomName);
+    const room = {
+      author: this.state.uid,
+      name: roomName,
+      created: Date.now(),
+    };
+
+    roomRef.push(room);
   };
 
   render() {

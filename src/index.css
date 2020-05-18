@@ -46,3 +46,13 @@ code {
   background-color: #009c85 !important;
   color: #ffffff !important;
 }
+
+/* li {
+  color: blue;
+}
+li:nth-child(odd) {
+  color: green;
+}
+li:nth-child(even) {
+  color: red;
+} */

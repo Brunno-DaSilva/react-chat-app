@@ -7,6 +7,8 @@
     ReactJS
     FireBase
     Sass
+    Bulma
+    Moment JS
 
 ---
 

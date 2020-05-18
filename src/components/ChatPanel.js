@@ -6,7 +6,12 @@ const ChatPanel = (props) => {
   return (
     <div>
       <MessageList messages={props.messages} />
-      <SendMessageForm />
+      <SendMessageForm
+        sendMessage={props.sendMessage}
+        email={props.email}
+        roomId={props.roomId}
+        uid={props.uid}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ const MainContainer = ({ children }) => {
     <div className="column hero">
       <div className="hero-body">
         <div className="columns is-centered">
-          <div className="column is-half">{children}</div>
+          <div className="column">{children}</div>
         </div>
       </div>
     </div>

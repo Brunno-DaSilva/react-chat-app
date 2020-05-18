@@ -18,4 +18,6 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 export const auth = firebaseApp.auth();
+export const messageRef = firebaseApp.database().ref("messages");
+
 export default firebaseApp;

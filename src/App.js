@@ -4,7 +4,7 @@ import LoginForm from "./components/LoginForm";
 import SideBar from "./components/SideBar";
 import MainContainer from "./components/MainContainer";
 import ChatPanel from "./components/ChatPanel";
-import { auth } from "./fire";
+import { auth, messageRef } from "./fire";
 import "bulma/css/bulma.css";
 
 class App extends Component {
@@ -90,6 +90,12 @@ class App extends Component {
       selectedRoom: id,
     });
   };
+
+  sendMessage = (message) => {
+    console.log("App", message);
+    messageRef.push(message);
+  };
+
   render() {
     return (
       <div className="columns vh-100 is-gapless ">
@@ -102,7 +108,13 @@ class App extends Component {
 
         <MainContainer>
           {this.state.isLoggedIn ? (
-            <ChatPanel messages={this.state.messages} />
+            <ChatPanel
+              messages={this.state.messages}
+              roomId={this.state.selectedRoom}
+              email={this.state.email}
+              uid={this.state.uid}
+              sendMessage={this.sendMessage}
+            />
           ) : (
             <div>
               <SignUpForm onSignUp={this.handleSignUp} />

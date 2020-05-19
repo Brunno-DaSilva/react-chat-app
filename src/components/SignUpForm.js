@@ -35,7 +35,6 @@ class SignUpForm extends Component {
       <section className="columns" style={isCentered}>
         <div className="box column is-three-quarters">
           <h1 className="title is-4 dark-gray-text">Sign Up Form</h1>
-
           <form onSubmit={this.onSubmit}>
             <div className="field">
               <div className="control has-icons-left has-icons-right">
@@ -100,7 +99,7 @@ class SignUpForm extends Component {
             <button
               placeholder="Username"
               type="submit"
-              className="button is-fullwidth is-primary"
+              className="button is-fullwidth button-blue"
             >
               Creat User
             </button>
@@ -128,7 +127,7 @@ const isCentered = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  background: "#506b63a2",
+  background: "#0325413d",
   borderRadius: "0.3rem",
 };
 

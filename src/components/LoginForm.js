@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faCheck, faLock } from "@fortawesome/free-solid-svg-icons";
 
 class LoginForm extends Component {
   state = {
@@ -37,26 +39,40 @@ class LoginForm extends Component {
 
           <form onSubmit={this.login}>
             <div className="field">
-              <div className="control">
+              <div className="control has-icons-left has-icons-right">
                 <input
                   placeholder="Email"
                   type="text"
                   value={this.state.email}
                   onChange={this.updateEmail}
                   className="input"
-                ></input>
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </span>
+                <span className="icon is-small is-right">
+                  {/* <i className="fas fa-check"></i> */}
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
               </div>
             </div>
 
             <div className="field">
-              <div className="control">
+              <div className="control has-icons-left has-icons-right">
                 <input
                   placeholder="Password"
                   type="password"
                   value={this.state.password}
                   onChange={this.updatePassword}
                   className="input"
-                ></input>
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon icon={faLock} />
+                </span>
+                <span className="icon is-small is-right">
+                  {/* <i className="fas fa-check"></i> */}
+                  <FontAwesomeIcon icon={faCheck} />
+                </span>
               </div>
             </div>
 

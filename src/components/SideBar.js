@@ -3,7 +3,7 @@ import RoomList from "./RoomList";
 
 const SideBar = ({ logout, rooms, selectedRoom, setRoom, addRoom }) => {
   return (
-    <div className="column is-3 hero is-primary" id="nav-bar">
+    <div className="column is-3 hero" id="nav-bar">
       <RoomList
         rooms={rooms}
         selectedRoom={selectedRoom}

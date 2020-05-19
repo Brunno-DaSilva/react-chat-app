@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { findByLabelText } from "@testing-library/react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faCheck, faLock } from "@fortawesome/free-solid-svg-icons";
 class SignUpForm extends Component {
   state = {
     email: "",
@@ -36,25 +38,63 @@ class SignUpForm extends Component {
 
           <form onSubmit={this.onSubmit}>
             <div className="field">
-              <div className="control">
+              <div className="control has-icons-left has-icons-right">
                 <input
                   placeholder="Email"
                   type="text"
                   value={this.state.email}
                   onChange={this.updateEmail}
                   className="input"
-                ></input>
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon
+                    style={
+                      this.state.password
+                        ? { color: "#00d1b2" }
+                        : { color: "tomato" }
+                    }
+                    icon={faEnvelope}
+                  />
+                </span>
+                <span className="icon is-small is-right">
+                  {/* <i className="fas fa-check"></i> */}
+                  <FontAwesomeIcon
+                    style={
+                      this.state.password ? { color: "#00d1b2" } : { color: "" }
+                    }
+                    icon={faCheck}
+                  />
+                </span>
               </div>
             </div>
             <div className="field">
-              <div className="control">
+              <div className="control has-icons-left has-icons-right">
                 <input
                   placeholder="Password"
                   type="password"
                   value={this.state.password}
                   onChange={this.updatePassword}
                   className="input"
-                ></input>
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon
+                    style={
+                      this.state.password
+                        ? { color: "#00d1b2" }
+                        : { color: "tomato" }
+                    }
+                    icon={faLock}
+                  />
+                </span>
+                <span className="icon is-small is-right">
+                  {/* <i className="fas fa-check"></i> */}
+                  <FontAwesomeIcon
+                    style={
+                      this.state.password ? { color: "#00d1b2" } : { color: "" }
+                    }
+                    icon={faCheck}
+                  />
+                </span>
               </div>
             </div>
             <button

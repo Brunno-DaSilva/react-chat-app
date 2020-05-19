@@ -18,12 +18,11 @@ const Message = ({ message }) => {
 };
 
 const StyleMessageBox = {
-  border: `1px solid red`,
   height: "80vh",
 };
 
 const MessageList = ({ messages }) => (
-  <ul style={StyleMessageBox}>
+  <ul id="room-ul" style={StyleMessageBox}>
     {Object.keys(messages)
       .map((messageKey) => ({
         ...messages[messageKey],

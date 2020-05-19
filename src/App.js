@@ -14,36 +14,33 @@ class App extends Component {
     email: "",
     uid: null,
     rooms: {},
-    selectedRoom: "hh12",
-    messages: {
-      m100: {
-        author: "asdasd65465as4da321sd",
-        email: "bruno.dasilvab@gmail.com",
-        roomId: "hh12",
-        text: "Ciao bella, me piace parlare italiano",
-        created: Date.now(),
-      },
-      m200: {
-        author: "sdsdsdaad3d213321658asd",
-        email: "test@test.com",
-        roomId: "hh12",
-        text: "Ciao bella, Me piace parlare italiano",
-        created: Date.now(),
-      },
-    },
+    selectedRoom: null,
+    messages: {},
   };
 
   loadData = () => {
-    roomRef.once("value").then((snapshot) => {
-      const rooms = snapshot.val();
-      const selectedRoom = Object.keys(rooms)[0];
-      console.log(selectedRoom);
-      this.setState({
-        rooms,
-        selectedRoom: selectedRoom,
-      });
-      console.log(rooms);
-    });
+    roomRef
+      .once("value")
+      .then((snapshot) => {
+        const rooms = snapshot.val();
+        const selectedRoom = Object.keys(rooms)[0];
+        this.setState({
+          rooms,
+          selectedRoom,
+        });
+        return messageRef
+          .orderByChild("roomId")
+          .equalTo(selectedRoom)
+          .once("value");
+      })
+      .then((snapshot) => {
+        console.log("Getting Messages", snapshot.val());
+        const messages = snapshot.val();
+        this.setState({
+          messages,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   componentDidMount() {
@@ -56,9 +53,29 @@ class App extends Component {
           isLoggedIn: true,
         });
         this.loadData();
+        roomRef.on("value", (snapshot) => {
+          const rooms = snapshot.val();
+          this.setState({
+            rooms,
+          });
+        });
+        messageRef.on("child_added", (snapshot) => {
+          const message = snapshot.val();
+          const key = snapshot.key;
+
+          if (message.roomId === this.state.selectedRoom) {
+            this.setState({
+              messages: {
+                ...this.state.messages,
+                [key]: message,
+              },
+            });
+          }
+        });
       }
     });
   }
+
   handleSignUp = ({ email, password }) => {
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -90,9 +107,19 @@ class App extends Component {
   };
 
   setRoom = (id) => {
-    this.setState({
-      selectedRoom: id,
-    });
+    messageRef
+      .orderByChild("roomId")
+      .equalTo(id)
+      .once("value")
+      .then((snapshot) => {
+        const messages = snapshot.val() || {};
+
+        this.setState({
+          selectedRoom: id,
+          messages,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   sendMessage = (message) => {

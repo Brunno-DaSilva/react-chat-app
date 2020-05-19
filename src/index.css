@@ -50,6 +50,7 @@ code {
 }
 
 #nav-bar {
+  background-color: #457b9d !important;
   padding: 0.5rem !important;
 }
 
@@ -58,17 +59,23 @@ code {
 }
 
 #nav-bar .isActiveRoom {
-  background-color: #009c85 !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #545454 !important;
 }
 
-/* li {
-    color: blue;
-  }
-  li:nth-child(odd) {
-    color: green;
-  }
-  li:nth-child(even) {
-    color: red;
-  } */
+#room-ul li:nth-child(odd) {
+  background-color: #e9c46a;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #545454;
+  border-radius: 1rem;
+}
+
+#room-ul li:nth-child(even) {
+  background-color: #2a9d8f;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  border-radius: 1rem;
+}
 /*# sourceMappingURL=index.css.map */

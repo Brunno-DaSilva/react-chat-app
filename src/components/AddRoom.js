@@ -25,9 +25,6 @@ class AddRoom extends Component {
               onChange={(e) => this.setState({ rooName: e.target.value })}
               value={this.state.roomName}
             />
-            <button className="button" type="submit">
-              Add Room
-            </button>
           </div>
         </form>
       </div>

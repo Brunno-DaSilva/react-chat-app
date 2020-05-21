@@ -4,7 +4,9 @@ import LoginForm from "./components/LoginForm";
 import SideBar from "./components/SideBar";
 import MainContainer from "./components/MainContainer";
 import ChatPanel from "./components/ChatPanel";
+import InitialMenu from "./components/InitialMenu";
 import { auth, messageRef, roomRef } from "./fire";
+
 import "bulma/css/bulma.css";
 
 class App extends Component {
@@ -139,36 +141,45 @@ class App extends Component {
   render() {
     return (
       <div className="columns vh-100 is-gapless ">
-        <SideBar
-          logout={this.logout}
-          rooms={this.state.rooms}
-          selectedRoom={this.state.selectedRoom}
-          setRoom={this.setRoom}
-          addRoom={this.addRoom}
-        />
-
         {this.state.isLoggedIn ? (
-          <MainContainer>
-            <ChatPanel
-              messages={this.state.messages}
-              roomId={this.state.selectedRoom}
-              email={this.state.email}
-              uid={this.state.uid}
-              sendMessage={this.sendMessage}
+          <>
+            <SideBar
+              logout={this.logout}
+              rooms={this.state.rooms}
+              selectedRoom={this.state.selectedRoom}
+              setRoom={this.setRoom}
+              addRoom={this.addRoom}
             />
-          </MainContainer>
+            <MainContainer>
+              <ChatPanel
+                messages={this.state.messages}
+                roomId={this.state.selectedRoom}
+                email={this.state.email}
+                uid={this.state.uid}
+                sendMessage={this.sendMessage}
+              />
+            </MainContainer>
+          </>
         ) : (
           <MainContainer>
             {this.state.wantsToLogin ? (
-              <LoginForm
-                onLogin={this.handleLogin}
-                goToSignUp={() => this.setState({ wantsToLogin: false })}
-              />
+              <>
+                <InitialMenu />
+
+                <LoginForm
+                  onLogin={this.handleLogin}
+                  goToSignUp={() => this.setState({ wantsToLogin: false })}
+                />
+              </>
             ) : (
-              <SignUpForm
-                onSignUp={this.handleSignUp}
-                goToLogin={() => this.setState({ wantsToLogin: true })}
-              />
+              <>
+                <InitialMenu />
+
+                <SignUpForm
+                  onSignUp={this.handleSignUp}
+                  goToLogin={() => this.setState({ wantsToLogin: true })}
+                />
+              </>
             )}
           </MainContainer>
         )}

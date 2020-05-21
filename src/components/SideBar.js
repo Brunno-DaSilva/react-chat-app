@@ -6,7 +6,7 @@ const SideBar = ({ logout, rooms, selectedRoom, setRoom, addRoom }) => {
   return (
     <div className="column is-3 hero" id="nav-bar">
       <div className="">
-        <h1 className="title taga-logo is-fullwidth">
+        <h1 className="title tagarela-logo-side is-fullwidth">
           Tagarela
           <span className="taga-icon-logo">
             <FontAwesomeIcon icon={faComments} />
